@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\TimeEntry;
-use App\User;
 
 class DatabaseSeeder extends Seeder
 {
