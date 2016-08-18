@@ -24,6 +24,15 @@
                 </div>
                 <div class="time-entry-comment">                
                     <form class="navbar-form">
+                        <select name="user" class="form-control" ng-model="vm.timeEntryUser" ng-options="user.first_name + ' ' + user.last_name for user in vm.users">
+                            <option value="">-- Select a user --</option>
+                        </select>
+                        <input class="form-control" ng-model="vm.comment" placeholder="Enter a comment"></input>
+                        <button class="btn btn-primary" ng-click="vm.logNewTime()">Log Time</button>
+                    </form>
+                </div>
+                <div class="time-entry-comment">                
+                    <form class="navbar-form">
                         <input class="form-control" ng-model="vm.comment" placeholder="Enter a comment">
                         </input>
                         <button class="btn btn-primary" ng-click="vm.logNewTime()">Log Time</button>
@@ -38,7 +47,7 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <h4><i class="glyphicon glyphicon-user"></i> 
-                            {{time.user_firstname}} {{time.user_lastname}}</h4>
+                            {{time.user.first_name}} {{time.user.last_name}}</h4>
                             <p><i class="glyphicon glyphicon-pencil"></i> {{time.comment}}</p>
                         </div>
                         <div class="col-sm-4 time-numbers">
@@ -79,4 +88,5 @@
     <script type="text/javascript" src="scripts/app.js"></script>
     <script type="text/javascript" src="scripts/controllers/TimeEntry.js"></script>
     <script type="text/javascript" src="scripts/services/time.js"></script>
+    <script type="text/javascript" src="scripts/services/user.js"></script>
 </html>
