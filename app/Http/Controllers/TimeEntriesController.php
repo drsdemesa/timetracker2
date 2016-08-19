@@ -30,4 +30,17 @@ class TimeEntriesController extends Controller
 	    $timeentry->save();
 
 	}
+
+	// Grab all the data passed into the request and fill the database record with the new data
+	public function update($id, Request $request)
+	{
+	    $timeentry = TimeEntry::find($id);
+	    
+	    $data = $request->all();
+
+	    $timeentry->fill($data);
+
+	    $timeentry->save();
+	        
+	}
 }
