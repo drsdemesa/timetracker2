@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\TimeEntry;
 
+// use Illuminate\Support\Facades\Request;
+
 class TimeEntriesController extends Controller
 {
     // Gets time entries and eager loads their associated users
@@ -15,4 +17,17 @@ class TimeEntriesController extends Controller
 
         return $time;
     }
+
+    // Grab all the data passed into the request and save a new record
+	public function store(Request $request)
+	{
+	    $data = $request->all();
+
+	    $timeentry = new TimeEntry();
+
+	    $timeentry->fill($data);
+
+	    $timeentry->save();
+
+	}
 }

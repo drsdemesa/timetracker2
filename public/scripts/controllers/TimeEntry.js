@@ -81,6 +81,21 @@
                     return;
                 }
 
+                // Call to the saveTime method on the time service
+
+                // to save the new time entry to the database
+                time.saveTime({
+                    "user_id":vm.timeEntryUser.id,
+                    "start_time":vm.clockIn,
+                    "end_time":vm.clockOut,
+                    "comment":vm.comment
+                }).then(function(success) {
+                    getTimeEntries();
+                    console.log(success);
+                }, function(error) {
+                    console.log(error);
+                });
+
                 vm.timeentries.push({
                     "user_id":1,
                     "user_firstname":"Ryan",
@@ -93,7 +108,15 @@
 
                 updateTotalTime(vm.timeentries);
 
+                // Reset clockIn and clockOut times to the current time
+                vm.clockIn = moment();
+                vm.clockOut = moment();
+
+                // Clear the comment field
                 vm.comment = "";
+
+                // Deselect the user
+                vm.timeEntryUser = "";
             }
         }
             
