@@ -43,4 +43,12 @@ class TimeEntriesController extends Controller
 	    $timeentry->save();
 	        
 	}
+
+	// Find the time entry to be deleted and then call delete
+	public function destroy($id)
+	{
+	    $timeentry = TimeEntry::find($id);
+
+	    $timeentry->delete();   
+	}
 }
